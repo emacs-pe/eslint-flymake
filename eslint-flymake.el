@@ -95,10 +95,10 @@
                                                for (beg . end) = (flymake-diag-region source-buffer
                                                                                       (string-to-number (match-string 2))
                                                                                       (string-to-number (match-string 3)))
-                                               for type = (if (string= (match-string 4)
-                                                                       "warning")
-                                                              :warning
-                                                            :error)
+                                               for type = (pcase (match-string 4)
+                                                            ("warning" :warning)
+                                                            ("error" :error)
+                                                            (t :note))
                                                for msg = (match-string 5)
                                                collect (flymake-make-diagnostic source-buffer
                                                                                 beg end
