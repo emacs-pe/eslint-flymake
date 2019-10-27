@@ -33,8 +33,6 @@
 ;;   (add-hook 'js-mode-hook 'eslint-flymake-setup-backend)
 ;;
 ;; Ideas for further development
-;; - Add a customize flag to enable using npx customize.
-;; - Flag to enable eslint conditionally through dir-locals.
 ;; - 'eslint-flymake-explain-diagnostic' to open rule explanation in
 ;;   the users browser.
 ;; - Parse error w/o regexp.
