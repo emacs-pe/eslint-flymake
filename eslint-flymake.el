@@ -51,6 +51,11 @@
 
 (defvar-local eslint-flymake-proc nil)
 
+(defcustom eslint-flymake-command '("eslint" "--no-color" "--stdin")
+  "The 'eslint' command along with the arguments it should be called with.."
+  :type '(repeat  string)
+  :group 'eslint-flymake)
+
 ;; 1 both and line:col
 ;; 2 line
 ;; 3 column
@@ -78,7 +83,7 @@
                           :noquery t
                           :connection-type 'pipe
                           :buffer (generate-new-buffer "*eslint-flymake*")
-                          :command '("npx" "eslint" "--stdin")
+                          :command eslint-flymake-command
                           :sentinel (lambda (proc _event)
                                       (when (eq 'exit (process-status proc))
 
