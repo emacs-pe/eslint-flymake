@@ -96,7 +96,7 @@
                                                for type = (pcase (match-string 4)
                                                             ("warning" :warning)
                                                             ("error" :error)
-                                                            (t :note))
+                                                            (_ :note))
                                                for msg = (match-string 5)
                                                collect (flymake-make-diagnostic source-buffer
                                                                                 beg end
