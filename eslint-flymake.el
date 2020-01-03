@@ -84,28 +84,28 @@
                           :command eslint-flymake-command
                           :sentinel (lambda (proc _event)
                                       (when (eq 'exit (process-status proc))
-
-                                        (if (with-current-buffer source-buffer (eq proc eslint-flymake-proc))
-                                            (with-current-buffer (process-buffer proc)
-                                              (goto-char (point-min))
-                                              (cl-loop
-                                               while (search-forward-regexp eslint-flymake-regexp nil t)
-                                               for (beg . end) = (flymake-diag-region source-buffer
-                                                                                      (string-to-number (match-string 2))
-                                                                                      (string-to-number (match-string 3)))
-                                               for type = (pcase (match-string 4)
-                                                            ("warning" :warning)
-                                                            ("error" :error)
-                                                            (_ :note))
-                                               for msg = (match-string 5)
-                                               collect (flymake-make-diagnostic source-buffer
-                                                                                beg end
-                                                                                type msg)
-                                               into diags
-                                               finally (funcall report-fn diags)))
-                                          (flymake-log :warning "Canceling obsolete check %s"
-                                                       proc))
-                                        (kill-buffer (process-buffer proc))))))
+                                        (unwind-protect
+                                            (if (with-current-buffer source-buffer (eq proc eslint-flymake-proc))
+                                                (with-current-buffer (process-buffer proc)
+                                                  (goto-char (point-min))
+                                                  (cl-loop
+                                                   while (search-forward-regexp eslint-flymake-regexp nil t)
+                                                   for (beg . end) = (flymake-diag-region source-buffer
+                                                                                          (string-to-number (match-string 2))
+                                                                                          (string-to-number (match-string 3)))
+                                                   for type = (pcase (match-string 4)
+                                                                ("warning" :warning)
+                                                                ("error" :error)
+                                                                (_ :note))
+                                                   for msg = (match-string 5)
+                                                   collect (flymake-make-diagnostic source-buffer
+                                                                                    beg end
+                                                                                    type msg)
+                                                   into diags
+                                                   finally (funcall report-fn diags)))
+                                              (flymake-log :warning "Canceling obsolete check %s"
+                                                           proc))
+                                          (kill-buffer (process-buffer proc)))))))
 
       (process-send-region eslint-flymake-proc (point-min) (point-max))
       (process-send-eof eslint-flymake-proc))))
