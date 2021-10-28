@@ -83,7 +83,7 @@
                           :buffer (generate-new-buffer "*eslint-flymake*")
                           :command eslint-flymake-command
                           :sentinel (lambda (proc _event)
-                                      (when (eq 'exit (process-status proc))
+                                      (when (memq (process-status proc) '(signal exit))
                                         (unwind-protect
                                             (if (with-current-buffer source-buffer (eq proc eslint-flymake-proc))
                                                 (with-current-buffer (process-buffer proc)
