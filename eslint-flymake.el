@@ -50,7 +50,7 @@
 (defvar-local eslint-flymake-proc nil)
 
 (defcustom eslint-flymake-command '("eslint" "--no-color" "--stdin")
-  "The 'eslint' command along with the arguments it should be called with.."
+  "The `eslint' command along with the arguments it should be called with."
   :type '(repeat  string)
   :group 'eslint-flymake)
 
