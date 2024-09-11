@@ -3,8 +3,8 @@
 ;; Copyright (C) 2019 Javier Olaechea
 
 ;; Author: Javier Olaechea <pirata@gmail.com>
-;; Version: 0.1
-;; Package-Requires: ((emacs "26.1"))
+;; Version: 0.2
+;; Package-Requires: ((emacs "29.1") (flymake "1.2.2"))
 ;; Keywords: javascript, languages, flymake
 ;; URL: http://github.com/emacs-pe/eslint-flymake
 
