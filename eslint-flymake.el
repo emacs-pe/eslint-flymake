@@ -1,4 +1,4 @@
-;;; eslint-flymake --- An ESLint backend for Flymake.   -*- lexical-binding: t -*-
+;;; eslint-flymake.el --- An ESLint backend for Flymake.   -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2019 Javier Olaechea
 
@@ -118,3 +118,4 @@
   #'eslint-flymake-setup "2024-10-10")
 
 (provide 'eslint-flymake)
+;;; eslint-flymake.el ends here
