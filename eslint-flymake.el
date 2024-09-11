@@ -110,8 +110,11 @@
       (process-send-region eslint-flymake-proc (point-min) (point-max))
       (process-send-eof eslint-flymake-proc))))
 
-(defun eslint-flymake-setup-backend ()
+(defun eslint-flymake-setup ()
   (add-hook 'flymake-diagnostic-functions 'eslint-flymake nil t))
+
+(define-obsolete-function-alias 'eslint-flymake-setup-backend
+  #'eslint-flymake-setup "2024-10-10")
 
 (add-hook 'js-mode-hook 'eslint-flymake-setup-backend)
 
