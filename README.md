@@ -2,10 +2,12 @@
 
 # Usage
 
-## Installation
-
 ```emacs-lisp
-(use-package eslint-flymake)
+(use-package eslint-flymake
+  :hook ((js-mode            . eslint-flymake-setup)
+         (js-jsx-mode        . eslint-flymake-setup)
+         (typescript-ts-mode . eslint-flymake-setup)
+         (tsx-ts-mode        . eslint-flymake-setup)))
 ```
 
 ## Customization options

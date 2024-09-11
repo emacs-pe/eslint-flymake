@@ -117,6 +117,4 @@
 (define-obsolete-function-alias 'eslint-flymake-setup-backend
   #'eslint-flymake-setup "2024-10-10")
 
-(add-hook 'js-mode-hook 'eslint-flymake-setup-backend)
-
 (provide 'eslint-flymake)
