@@ -110,6 +110,7 @@
       (process-send-region eslint-flymake-proc (point-min) (point-max))
       (process-send-eof eslint-flymake-proc))))
 
+;;;###autoload
 (defun eslint-flymake-setup ()
   (add-hook 'flymake-diagnostic-functions 'eslint-flymake nil t))
 
