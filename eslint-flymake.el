@@ -1,6 +1,6 @@
 ;;; eslint-flymake.el --- An ESLint backend for Flymake.   -*- lexical-binding: t -*-
 
-;; Copyright (C) 2019 Javier Olaechea
+;; Copyright (C) 2019-2026 Javier Olaechea
 
 ;; Author: Javier Olaechea <pirata@gmail.com>
 ;; Version: 0.2
@@ -113,9 +113,6 @@
 ;;;###autoload
 (defun eslint-flymake-setup ()
   (add-hook 'flymake-diagnostic-functions 'eslint-flymake nil t))
-
-(define-obsolete-function-alias 'eslint-flymake-setup-backend
-  #'eslint-flymake-setup "2024-10-10")
 
 (provide 'eslint-flymake)
 ;;; eslint-flymake.el ends here
